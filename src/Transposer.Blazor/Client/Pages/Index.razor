@@ -1,8 +1,20 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Transposer</PageTitle>
 
-<h1>Hello, world!</h1>
+<div>
+    <MudItem xs="12" sm="12" md="12">
+        <MudTextField @bind-Value="LyricsAndChords" 
+        Label="Lyrics and chords" 
+        Placeholder="your lyrics and chords go here..." 
+        MaxLength="int.MaxValue"
+        Lines="40"
+        FullWidth="true"
+        Style="@Chords"
+        Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
 
-Welcome to your new app.
-
+    <div style="margin-top: 20px;">
+        <MudButton Variant="Variant.Filled" @onclick="async () => await TransposeSongAsync()">Transpose</MudButton>
+    </div>
+</div>
