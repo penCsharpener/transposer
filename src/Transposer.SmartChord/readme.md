@@ -1,0 +1,1 @@
+﻿this library is a fork and modification of [SmartChord](https://github.com/codeapologist/SmartChord) library (MIT license)

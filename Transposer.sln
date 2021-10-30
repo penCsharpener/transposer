@@ -7,16 +7,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D25A2931-2EB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3DB64677-5B06-421D-881F-85362CD03C88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transposer.Blazor.Server", "src\Transposer.Blazor\Server\Transposer.Blazor.Server.csproj", "{5F52B223-BF2A-4F48-B38B-FC55EAF66661}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transposer.Blazor.Server", "src\Transposer.Blazor\Server\Transposer.Blazor.Server.csproj", "{5F52B223-BF2A-4F48-B38B-FC55EAF66661}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transposer.Blazor.Client", "src\Transposer.Blazor\Client\Transposer.Blazor.Client.csproj", "{36D8D02C-9F20-45AF-8269-5520A667847A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transposer.Blazor.Client", "src\Transposer.Blazor\Client\Transposer.Blazor.Client.csproj", "{36D8D02C-9F20-45AF-8269-5520A667847A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transposer.Blazor.Shared", "src\Transposer.Blazor\Shared\Transposer.Blazor.Shared.csproj", "{1650F89F-C52F-43FD-A75C-1ABE6F918279}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transposer.Blazor.Shared", "src\Transposer.Blazor\Shared\Transposer.Blazor.Shared.csproj", "{1650F89F-C52F-43FD-A75C-1ABE6F918279}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{79435996-7E51-4E07-AFC9-02997B36F1AB}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transposer.SmartChord", "src\Transposer.SmartChord\Transposer.SmartChord.csproj", "{38D316E8-406E-433D-A079-1AA9CC2EA484}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transposer.SmartChord.Tests", "tests\Transposer.SmartChord.Tests\Transposer.SmartChord.Tests.csproj", "{A7FE15AB-E797-401B-B0F5-C381A1FB40FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,14 @@ Global
 		{1650F89F-C52F-43FD-A75C-1ABE6F918279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1650F89F-C52F-43FD-A75C-1ABE6F918279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1650F89F-C52F-43FD-A75C-1ABE6F918279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38D316E8-406E-433D-A079-1AA9CC2EA484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38D316E8-406E-433D-A079-1AA9CC2EA484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38D316E8-406E-433D-A079-1AA9CC2EA484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38D316E8-406E-433D-A079-1AA9CC2EA484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7FE15AB-E797-401B-B0F5-C381A1FB40FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7FE15AB-E797-401B-B0F5-C381A1FB40FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7FE15AB-E797-401B-B0F5-C381A1FB40FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7FE15AB-E797-401B-B0F5-C381A1FB40FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +56,8 @@ Global
 		{5F52B223-BF2A-4F48-B38B-FC55EAF66661} = {D25A2931-2EB8-4058-BB5A-7FD361D6E7B1}
 		{36D8D02C-9F20-45AF-8269-5520A667847A} = {D25A2931-2EB8-4058-BB5A-7FD361D6E7B1}
 		{1650F89F-C52F-43FD-A75C-1ABE6F918279} = {D25A2931-2EB8-4058-BB5A-7FD361D6E7B1}
+		{38D316E8-406E-433D-A079-1AA9CC2EA484} = {D25A2931-2EB8-4058-BB5A-7FD361D6E7B1}
+		{A7FE15AB-E797-401B-B0F5-C381A1FB40FA} = {3DB64677-5B06-421D-881F-85362CD03C88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D95C5AE-7355-4638-BDB6-6AFED32196D9}
