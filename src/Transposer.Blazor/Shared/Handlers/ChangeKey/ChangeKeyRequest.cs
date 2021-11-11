@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Transposer.Blazor.Shared.Models.Enums;
 
 namespace Transposer.Blazor.Shared.Handlers.ChangeKey
 {
@@ -9,7 +10,7 @@ namespace Transposer.Blazor.Shared.Handlers.ChangeKey
             OriginalSongText = originalSongText;
         }
 
-        public ChangeKeyRequest(string originalSongText, string? originalKey, string? newKey)
+        public ChangeKeyRequest(string originalSongText, Keys originalKey, Keys newKey)
         {
             OriginalSongText = originalSongText;
             OriginalKey = originalKey;
@@ -17,7 +18,7 @@ namespace Transposer.Blazor.Shared.Handlers.ChangeKey
         }
 
         public string OriginalSongText { get; set; }
-        public string? OriginalKey { get; set; }
-        public string? NewKey { get; set; }
+        public Keys OriginalKey { get; set; }
+        public Keys NewKey { get; set; }
     }
 }

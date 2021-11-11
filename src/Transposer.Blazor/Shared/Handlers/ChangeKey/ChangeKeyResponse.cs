@@ -3,5 +3,6 @@
     public class ChangeKeyResponse
     {
         public string TransposedSongText { get; set; }
+        public string? ErrorMessage { get; set; }
     }
 }

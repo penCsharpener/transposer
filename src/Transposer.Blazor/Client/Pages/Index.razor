@@ -1,20 +1,45 @@
 ﻿@page "/"
+@using Transposer.Blazor.Shared.Extensions
+@using Transposer.Blazor.Shared.Models.Enums
 
 <PageTitle>Transposer</PageTitle>
 
 <div>
     <MudItem xs="12" sm="12" md="12">
-        <MudTextField @bind-Value="LyricsAndChords" 
-        Label="Lyrics and chords" 
-        Placeholder="your lyrics and chords go here..." 
+        <MudTextField @bind-Value="SongText" 
+        Label="Song text" 
+        Placeholder="your song goes here..." 
         MaxLength="int.MaxValue"
         Lines="40"
         FullWidth="true"
         Style="@Chords"
-        Variant="Variant.Outlined"></MudTextField>
+        Variant="Variant.Outlined"
+        TextChanged="() => OnSongPastedAsync()"
+        ></MudTextField>
     </MudItem>
 
     <div style="margin-top: 20px;">
-        <MudButton Variant="Variant.Filled" @onclick="async () => await TransposeSongAsync()">Transpose</MudButton>
     </div>
+    <MudGrid>
+    <MudItem xs="2" sm="2" md="2">
+        <MudSelect @bind-Value="SelectedSourceKeys" T="Keys" Label="Original Key" AnchorOrigin="Origin.BottomCenter">
+            @foreach (var key in DetectedKeyOptions)
+            {
+            <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
+            }
+        </MudSelect>
+    </MudItem>
+    <MudItem xs="2" sm="2" md="2">
+        <MudSelect @bind-Value="SelectedTargetKeys" T="Keys" Label="Target Key" Variant="Variant.Filled" AnchorOrigin="Origin.BottomCenter">
+            @foreach (var key in TargetKeyOptions)
+            {
+            <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
+            }
+        </MudSelect>
+    </MudItem>
+    <MudItem xs="1" sm="1" md="1">
+        <MudButton Variant="Variant.Filled" @onclick="async () => await TransposeSongAsync()">Transpose</MudButton>
+    </MudItem>
+</MudGrid>
+
 </div>
