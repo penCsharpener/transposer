@@ -12,9 +12,9 @@ namespace Transposer.Blazor.Client.Pages
         public string SongText { get; set; } = string.Empty;
         public string Chords { get; } = "font-family: \"Courier New\", Courier, monospace !important;";
         public Keys[] DetectedKeyOptions { get; set; } = Enum.GetValues<Keys>();
-        public Keys SelectedSourceKeys { get; set; }
+        public Keys SelectedSourceKey { get; set; }
         public Keys[] TargetKeyOptions { get; set; } = Enum.GetValues<Keys>();
-        public Keys SelectedTargetKeys { get; set; }
+        public Keys SelectedTargetKey { get; set; }
 
         [Inject]
         public IMediator Mediator { get; set; }
@@ -30,7 +30,7 @@ namespace Transposer.Blazor.Client.Pages
         {
             var response = await Mediator.Send(new KeyDetectionRequest(SongText));
 
-            SelectedSourceKeys = response.DetectedKey;
+            SelectedSourceKey = response.DetectedKey;
 
             if (!string.IsNullOrWhiteSpace(response.ErrorMessage))
             {
@@ -40,7 +40,7 @@ namespace Transposer.Blazor.Client.Pages
 
         private async Task TransposeSongAsync()
         {
-            var response = await Mediator.Send(new ChangeKeyRequest(SongText));
+            var response = await Mediator.Send(new ChangeKeyRequest(SongText, SelectedSourceKey, SelectedTargetKey));
 
             SongText = response.TransposedSongText;
 

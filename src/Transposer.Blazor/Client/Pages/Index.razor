@@ -22,7 +22,7 @@
     </div>
     <MudGrid>
     <MudItem xs="2" sm="2" md="2">
-        <MudSelect @bind-Value="SelectedSourceKeys" T="Keys" Label="Original Key" AnchorOrigin="Origin.BottomCenter">
+        <MudSelect @bind-Value="SelectedSourceKey" T="Keys" Label="Original Key" AnchorOrigin="Origin.BottomCenter">
             @foreach (var key in DetectedKeyOptions)
             {
             <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
@@ -30,7 +30,7 @@
         </MudSelect>
     </MudItem>
     <MudItem xs="2" sm="2" md="2">
-        <MudSelect @bind-Value="SelectedTargetKeys" T="Keys" Label="Target Key" Variant="Variant.Filled" AnchorOrigin="Origin.BottomCenter">
+        <MudSelect @bind-Value="SelectedTargetKey" T="Keys" Label="Target Key" Variant="Variant.Filled" AnchorOrigin="Origin.BottomCenter">
             @foreach (var key in TargetKeyOptions)
             {
             <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
