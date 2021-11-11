@@ -19,40 +19,33 @@ namespace Transposer.SmartChord.Transposer
             _parser = parser;
         }
 
-        public async Task<string> ResolveSongKey(string chordsheet)
+        public Note ResolveSongKey(string chordsheet)
         {
             var song = _parser.ParseSong(chordsheet);
-            return await Task.Run(() => ResolveSongKey(song));
+            return ResolveSongKey(song);
         }
 
-        public async Task<string> ResolveSongKey(Song song)
+        public Note ResolveSongKey(Song song)
         {
             var analyzer = new SongAnalyzer();
-            var key = await Task.Run(() => analyzer.DiscoverKeyOfSong(song));
+            var key = analyzer.DiscoverKeyOfSong(song);
             if (key == Note.Unknown)
             {
                 throw new InvalidOperationException("Chordsheet does not contain any valid chords.");
             }
-            var originalKey = key.GetDisplayName();
-            return originalKey;
+            return key;
         }
 
-        public async Task<string> ChangeKey(string chordsheet, string destinationKey, string originalKey = null)
+        public string ChangeKey(string chordsheet, Note destinationKey)
         {
             var song = _parser.ParseSong(chordsheet);
 
-            if (string.IsNullOrWhiteSpace(originalKey))
-            {
-                originalKey = await ResolveSongKey(song);
-            }
-
-            return ChangeKey(song, destinationKey, originalKey);
-
+            return ChangeKey(song, destinationKey, ResolveSongKey(song));
         }
 
-        public string ChangeKey(Song song, string destinationKey, string originalKey)
+        public string ChangeKey(Song song, Note destinationKey, Note originalKey)
         {
-            var noteDifference = destinationKey.ToNote() - originalKey.ToNote();
+            var noteDifference = destinationKey - originalKey;
 
             var chordElements = from line in song.Lines
                                 from element in line.Elements.OfType<ChordElement>()
