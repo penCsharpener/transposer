@@ -114,7 +114,7 @@ namespace Transposer.SmartChord.Parser
 
         public Song ParseSong(string chordSheet)
         {
-            StringReader reader = new StringReader(chordSheet);
+            var reader = new StringReader(chordSheet);
             var song = new Song();
 
             while (reader.Peek() != -1)

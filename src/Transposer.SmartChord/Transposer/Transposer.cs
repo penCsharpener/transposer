@@ -47,24 +47,35 @@ namespace Transposer.SmartChord.Transposer
         {
             var noteDifference = destinationKey - originalKey;
 
-            var chordElements = from line in song.Lines
-                                from element in line.Elements.OfType<ChordElement>()
-                                select element;
+            var chordElements = song.Lines.SelectMany(line => line.Elements.OfType<ChordElement>());
 
             foreach (var chordElement in chordElements)
             {
                 var originalIndex = (int)chordElement.Chord.RawRootNote.ToNote();
                 var newIndex = originalIndex + noteDifference;
+
                 if (newIndex < 0)
                 {
                     newIndex = NumberOfNotes + newIndex;
                 }
                 else if (newIndex > NumberOfNotes - 1)
                 {
-                    newIndex = newIndex - NumberOfNotes;
-
+                    newIndex -= NumberOfNotes;
                 }
+
                 var rootNote = ((Note)newIndex).GetDisplayName();
+
+                if (chordElement.Chord.RawRootNote.Length != rootNote.Length)
+                {
+                    if (chordElement.NextElement is WhitespaceElement whitespaceElement && whitespaceElement.Length > 0)
+                    {
+                        whitespaceElement.AddWhitespaces(chordElement.Chord.RawRootNote.Length - rootNote.Length);
+                    }
+                    else
+                    {
+
+                    }
+                }
 
                 if (rootNote.Any())
                 {

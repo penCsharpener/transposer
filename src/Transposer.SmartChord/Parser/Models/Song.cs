@@ -17,7 +17,7 @@
                 lines.Add(string.Join(null, elementList));
             }
 
-            return string.Join("\r\n", lines);
+            return string.Join(Environment.NewLine, lines);
         }
     }
 }

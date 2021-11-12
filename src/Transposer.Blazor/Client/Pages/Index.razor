@@ -18,28 +18,26 @@
         ></MudTextField>
     </MudItem>
 
-    <div style="margin-top: 20px;">
-    </div>
     <MudGrid>
-    <MudItem xs="2" sm="2" md="2">
-        <MudSelect @bind-Value="SelectedSourceKey" T="Keys" Label="Original Key" AnchorOrigin="Origin.BottomCenter">
-            @foreach (var key in DetectedKeyOptions)
-            {
-            <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
-            }
-        </MudSelect>
-    </MudItem>
-    <MudItem xs="2" sm="2" md="2">
-        <MudSelect @bind-Value="SelectedTargetKey" T="Keys" Label="Target Key" Variant="Variant.Filled" AnchorOrigin="Origin.BottomCenter">
-            @foreach (var key in TargetKeyOptions)
-            {
-            <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
-            }
-        </MudSelect>
-    </MudItem>
-    <MudItem xs="1" sm="1" md="1">
-        <MudButton Variant="Variant.Filled" @onclick="async () => await TransposeSongAsync()">Transpose</MudButton>
-    </MudItem>
-</MudGrid>
+        <MudItem Class="key-dropdown">
+            <MudSelect @bind-Value="SelectedSourceKey" T="Keys" Label="Original Key" AnchorOrigin="Origin.BottomCenter">
+                @foreach (var key in DetectedKeyOptions)
+                {
+                <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
+                }
+            </MudSelect>
+        </MudItem>
+        <MudItem Class="key-dropdown">
+            <MudSelect @bind-Value="SelectedTargetKey" T="Keys" Label="Target Key" AnchorOrigin="Origin.BottomCenter">
+                @foreach (var key in TargetKeyOptions)
+                {
+                <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
+                }
+            </MudSelect>
+        </MudItem>
+        <MudItem Class="d-flex align-center">
+            <MudButton Variant="Variant.Filled" @onclick="async () => await TransposeSongAsync()">Transpose</MudButton>
+        </MudItem>
+    </MudGrid>
 
 </div>
