@@ -5,39 +5,43 @@
 <PageTitle>Transposer</PageTitle>
 
 <div>
-    <MudItem xs="12" sm="12" md="12">
-        <MudTextField @bind-Value="SongText" 
-        Label="Song text" 
-        Placeholder="your song goes here..." 
-        MaxLength="int.MaxValue"
-        Lines="40"
-        FullWidth="true"
-        Style="@Chords"
-        Variant="Variant.Outlined"
-        TextChanged="() => OnSongPastedAsync()"
-        ></MudTextField>
-    </MudItem>
+  <MudItem xs="12" sm="12" md="12">
+    <MudTextField @bind-Value="SongText"
+                  Label="Song text"
+                  Placeholder="your song goes here..."
+                  MaxLength="int.MaxValue"
+                  Lines="40"
+                  FullWidth="true"
+                  Style="@Chords"
+                  Immediate="true"
+                  Variant="Variant.Outlined"
+                  TextChanged="() => OnSongPastedAsync()"></MudTextField>
+  </MudItem>
 
-    <MudGrid>
-        <MudItem Class="key-dropdown">
-            <MudSelect @bind-Value="SelectedSourceKey" T="Keys" Label="Original Key" AnchorOrigin="Origin.BottomCenter">
-                @foreach (var key in DetectedKeyOptions)
-                {
-                <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
-                }
-            </MudSelect>
-        </MudItem>
-        <MudItem Class="key-dropdown">
-            <MudSelect @bind-Value="SelectedTargetKey" T="Keys" Label="Target Key" AnchorOrigin="Origin.BottomCenter">
-                @foreach (var key in TargetKeyOptions)
-                {
-                <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
-                }
-            </MudSelect>
-        </MudItem>
-        <MudItem Class="d-flex align-center">
-            <MudButton Variant="Variant.Filled" @onclick="async () => await TransposeSongAsync()">Transpose</MudButton>
-        </MudItem>
-    </MudGrid>
+  <MudGrid Class="d-flex flex-row mt-4 ml-3">
+    <div class="key-dropdown">
+      <MudItem>
+        <MudSelect @bind-Value="SelectedSourceKey" T="Keys" Label="Original Key" AnchorOrigin="Origin.BottomCenter">
+          @foreach (var key in DetectedKeyOptions)
+          {
+            <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
+          }
+        </MudSelect>
+      </MudItem>
+    </div>
+    <div class="key-dropdown">
+      <MudItem>
+        <MudSelect @bind-Value="SelectedTargetKey" T="Keys" Label="Target Key" AnchorOrigin="Origin.BottomCenter">
+          @foreach (var key in TargetKeyOptions)
+          {
+            <MudSelectItem Value="key">@key.ToStringRepresentation()</MudSelectItem>
+          }
+        </MudSelect>
+      </MudItem>
+    </div>
+    <MudItem Class="d-flex align-center">
+      <MudButton Variant="Variant.Filled" @onclick="async () => await TransposeSongAsync()">Transpose</MudButton>
+    </MudItem>
+  </MudGrid>
 
 </div>
