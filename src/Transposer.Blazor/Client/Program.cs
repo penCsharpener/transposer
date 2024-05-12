@@ -25,7 +25,7 @@ builder.Services.AddMudServices(config =>
     config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
 
 });
-builder.Services.AddMediatR(typeof(ChangeKeyResponse).Assembly);
+builder.Services.AddMediatR(options => options.RegisterServicesFromAssembly(typeof(ChangeKeyResponse).Assembly));
 builder.Services.AddSharedDependencies();
 
 await builder.Build().RunAsync();
